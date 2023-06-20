@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "rust_analyzer", "tailwindcss" }
+local servers = { "html", "cssls", "tsserver", "rust_analyzer", "tailwindcss", "svelte" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,13 +13,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- 
+--
 -- lspconfig.pyright.setup { blabla}
 --
 
-local elixir_cmd = vim.fn.stdpath('data') .. "/mason/bin/elixir-ls"
+local elixir_cmd = vim.fn.stdpath "data" .. "/mason/bin/elixir-ls"
 lspconfig.elixirls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { elixir_cmd }
+  cmd = { elixir_cmd },
 }
