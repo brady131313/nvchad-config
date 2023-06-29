@@ -14,10 +14,11 @@ M.treesitter = {
     "markdown_inline",
     "rust",
     "elixir",
-    "heex"
+    "heex",
+    "svelte",
   },
   indent = {
-    enable = true,
+    enable = false,
     -- disable = {
     --   "python"
     -- },
@@ -39,7 +40,7 @@ M.mason = {
     "tailwindcss-language-server",
 
     "rust-analyzer",
-    "elixir-ls"
+    "elixir-ls",
   },
 }
 
