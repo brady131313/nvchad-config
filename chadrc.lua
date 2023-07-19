@@ -1,6 +1,9 @@
 ---@type ChadrcConfig
 local M = {}
 
+vim.opt.guifont = "JetBrainsMono NF Regular"
+vim.opt.clipboard = "unnamedplus"
+
 -- Path to overriding theme and highlights files
 local highlights = require "custom.highlights"
 

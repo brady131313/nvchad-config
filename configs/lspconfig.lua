@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "rust_analyzer", "svelte", "marksman" }
+local servers = { "html", "tsserver", "rust_analyzer", "svelte", "marksman" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,10 +13,22 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = "ignore",
+      },
+    },
+  },
+}
+
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "html", "elixir", "eelixir", "heex" },
+  filetypes = { "html", "css", "elixir", "eelixir", "heex" },
   init_options = {
     userLanguages = {
       elixir = "html-eex",
