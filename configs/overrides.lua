@@ -40,6 +40,7 @@ M.mason = {
     "tailwindcss-language-server",
 
     "rust-analyzer",
+    "codelldb",
     "elixir-ls",
   },
 }

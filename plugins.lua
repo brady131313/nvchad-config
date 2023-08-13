@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -46,13 +46,36 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
+  {
+    "simrat39/rust-tools.nvim",
+  },
+  {
+    "mfussenegger/nvim-dap",
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function()
+      require "custom.configs.dap"
+    end,
+  },
+  {
+    "nvim-telescope/telescope-dap.nvim",
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-dap.nvim",
+      config = function()
+        require("telescope").load_extension "dap"
+      end,
+    },
+  },
 
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   enabled = false
   -- },
-
 }
 
 return plugins
